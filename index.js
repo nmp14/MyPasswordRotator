@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const Password = require("./helpers/PasswordClass");
+const passwordFunctions = require("./helpers/passwordHelpers");
 
 const init = async () => {
     const choices = await choicePrompts();
@@ -18,11 +19,12 @@ const choicePrompts = () => {
     ])
 }
 
-const choicesSwitch = (choices) => {
+const choicesSwitch = async (choices) => {
     // Switch case based on asnwers to choicePrompts
     switch (choices) {
         case "Add new password":
-            // TODO
+            const addedNewPassword = await passwordFunctions.addPassword();
+            init();
             break;
         case "Look up password from list of Organizations":
             // TODO
