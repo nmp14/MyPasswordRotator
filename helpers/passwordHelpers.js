@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const Password = require("./PasswordClass");
 
 // Add a new password
 const addPassword = async () => {
@@ -14,6 +15,9 @@ const addPassword = async () => {
         console.log("\nPasswords did not match. Try again.\n");
         return;
     }
+
+    const newPasswordObj = new Password(org, pass);
+    await newPasswordObj.savePassword();
 }
 
 // Prompt user for password info.
